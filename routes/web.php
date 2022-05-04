@@ -15,9 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return inertia('Home',[
-        'name'=> 'Luis Felipe',
-        'frameworks'=>[
-            'Laravel','Vue', 'Inertia'
-        ]
+       
+    ]);
+});
+
+Route::get('/users', function () {
+    return inertia('Users',[
+       
+    ]);
+});
+
+Route::get('/settings', function () {
+    return inertia('Settings',[
+       
     ]);
 });
