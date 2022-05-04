@@ -4,7 +4,10 @@
         <meta name="description" content="Users Information" head-key="description">
     </Head>
     <div class="flex justify-between mb-6">
-        <h1  class="text-2xl fond-bold">Users</h1>
+        <div class="flex items-center">
+            <h1  class="text-2xl fond-bold">Users</h1>
+            <Link href="/users/create" class="text-blue-500 text-sm ml-3">New User</Link>
+        </div>
         <input type="text" name="" id="" placeholder="Search..." class="border px-2 rounded-lg" v-model="search">
     </div>
    
