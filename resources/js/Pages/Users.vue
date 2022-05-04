@@ -3,7 +3,11 @@
         <title>Users</title>
         <meta name="description" content="Users Information" head-key="description">
     </Head>
-    <h1  class="text-2xl fond-bold">Users</h1>
+    <div class="flex justify-between mb-6">
+        <h1  class="text-2xl fond-bold">Users</h1>
+        <input type="text" name="" id="" placeholder="Search..." class="border px-2 rounded-lg" v-model="search">
+    </div>
+   
     <div class="flex flex-col h-full">
         <!-- Table -->
         <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
@@ -29,15 +33,17 @@
         <Pagination :links="users.links"/>
     </div>
 </template>
-<script>
+<script setup>
 import Pagination from '../Shared/Pagination.vue'
-export default {
+import {ref, watch} from 'vue'
+import {Inertia } from '@inertiajs/inertia'
+let props = defineProps({ 
+    users:Object,
+    filters:Object
+})
+let search = ref(props.filters.search);
+watch(search,value=>{
+    Inertia.get('/users',{search:value}, {preserveState:true, replace: true});
+});
 
-    components:{
-        Pagination
-    },
-    props: {
-       users:Object
-    },
-};
 </script>
