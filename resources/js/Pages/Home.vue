@@ -9,8 +9,5 @@ export default {
     components:{
         Layout
     },
-    props: {
-       
-    },
 };
 </script>

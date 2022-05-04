@@ -1,6 +1,6 @@
 <template>
     <Layout>
-        <h1  class="text-4xl fond-bold">Users</h1>
+        <h1  class="text-2xl fond-bold">Users</h1>
     
     
         <div style="margin-top: 400px">
