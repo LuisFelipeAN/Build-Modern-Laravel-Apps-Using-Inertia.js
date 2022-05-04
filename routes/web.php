@@ -20,8 +20,9 @@ Route::get('/', function () {
 });
 
 Route::get('/users', function () {
-    sleep(2);
-    return inertia('Users',[
+    sleep(0.5);
+    return inertia('Users',[ 
+        'time'=>now()->toTimeString()
        
     ]);
 });
