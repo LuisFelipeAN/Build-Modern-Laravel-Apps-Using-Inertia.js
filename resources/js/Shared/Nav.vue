@@ -5,7 +5,7 @@
             <NavLink href="/" :active="$page.component==='Home'">Home </NavLink>
             <NavLink href="/users" :active="$page.component==='Users'">Users </NavLink>
             <NavLink href="/settings" :active="$page.component==='Settings'">Settings </NavLink>
-            <li><Link href="/logout" method="post" as='button' :data="{foo : 'bar'}" class="text-blue-500 hover:underline">Log Out</Link></li>
+            <NavLink href="/logout" method="post">Log Out </NavLink>
         </ul>
     </nav>
 </template>
