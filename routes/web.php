@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,10 +37,12 @@ Route::middleware('auth')->group(function(){
                 ->paginate(10)
                 ->withQueryString()
                 ->through(fn($user)=>[
-                'id'=>$user->id,
-                'name'=>$user->name
+                    'id'=>$user->id,
+                    'name'=>$user->name,
+                    'can'=> ['edit'=>Auth::user()->can('edit',$user)]
                 ]),
-                'filters'=>Request::only(['search'])     
+                'filters'=>Request::only(['search']),
+                'can'=> ['createUser'=>Auth::user()->can('create',User::class)]
         ]);
     });
     
@@ -47,7 +50,7 @@ Route::middleware('auth')->group(function(){
         return inertia('Users/Create',[
            
         ]);
-    });
+    })->can('create','App\Models\User');
     
     Route::post('/users', function () {
         sleep(2);
